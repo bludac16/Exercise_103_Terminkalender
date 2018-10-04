@@ -1,5 +1,6 @@
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 /*
@@ -16,7 +17,8 @@ public class AppointmentDlg extends javax.swing.JDialog {
 
     boolean ok;
     Appointment appointment;
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH.mm");
+    LocalDateTime ldt;
+    //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH.mm");
     /**
      * Creates new form AppointmentDlg
      */
@@ -189,8 +191,8 @@ public class AppointmentDlg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
-        String strdat = String.format("%s.%s.%s-%s.%s",tfTag.getText(), tfMonat.getText(), tfJahr.getText(), tfStunde.getText(), tfMinute.getText());
-        Appointment appointment = new Appointment(tfText.getText(), (LocalDateTime) dtf.parse(strdat));
+        ldt.of(Integer.parseInt(tfTag.getText()), Integer.parseInt(tfMonat.getText()), Integer.parseInt(tfJahr.getText()), Integer.parseInt(tfStunde.getText()), Integer.parseInt(tfMinute.getText()));
+        Appointment appointment = new Appointment(tfText.getText(),ldt);
         ok = true;
         this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed

@@ -1,3 +1,6 @@
+
+import java.awt.event.MouseEvent;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +16,11 @@ public class AppointmentGUI extends javax.swing.JFrame {
     /**
      * Creates new form AppointmentGUI
      */
+    private AppointmentModell model = new AppointmentModell();
+    
     public AppointmentGUI() {
         initComponents();
+        listOutput.setModel(model);
     }
 
     /**
@@ -25,22 +31,59 @@ public class AppointmentGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
+
+        popupOptionen = new javax.swing.JPopupMenu();
+        menuOptionen = new javax.swing.JMenu();
+        miHinzufügen = new javax.swing.JMenuItem();
+        miLöschen = new javax.swing.JMenuItem();
+        miÄndern = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listOutput = new javax.swing.JList<>();
+
+        menuOptionen.setLabel("Optionen");
+
+        miHinzufügen.setLabel("Hinzufügen");
+        miHinzufügen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miHinzufügenActionPerformed(evt);
+            }
+        });
+        menuOptionen.add(miHinzufügen);
+
+        miLöschen.setLabel("Löschen");
+        menuOptionen.add(miLöschen);
+
+        miÄndern.setLabel("Ändern");
+        menuOptionen.add(miÄndern);
+
+        popupOptionen.add(menuOptionen);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        listOutput.setBorder(javax.swing.BorderFactory.createTitledBorder("Termine"));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, popupOptionen, org.jdesktop.beansbinding.ObjectProperty.create(), listOutput, org.jdesktop.beansbinding.BeanProperty.create("componentPopupMenu"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane1.setViewportView(listOutput);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miHinzufügenActionPerformed
+        AppointmentDlg dlg = new AppointmentDlg(this, true);
+        dlg.setVisible(true);
+        
+        if( dlg.isOk() ){
+            Appointment a = dlg.getAppointment();
+            model.add(a);
+        }
+    }//GEN-LAST:event_miHinzufügenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +121,13 @@ public class AppointmentGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listOutput;
+    private javax.swing.JMenu menuOptionen;
+    private javax.swing.JMenuItem miHinzufügen;
+    private javax.swing.JMenuItem miLöschen;
+    private javax.swing.JMenuItem miÄndern;
+    private javax.swing.JPopupMenu popupOptionen;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

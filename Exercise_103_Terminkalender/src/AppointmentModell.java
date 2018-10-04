@@ -30,6 +30,18 @@ public class AppointmentModell extends AbstractListModel{
         fireIntervalAdded(this, appointments.size()-1, appointments.size()-1);
     }
     
+    public void delete(int i)
+    {
+        appointments.remove(i);
+        fireContentsChanged(this, 0, appointments.size()-1);
+    }
+    
+    public void edit(int i, Appointment a)
+    {
+        appointments.set(i, a);
+        fireContentsChanged(this, 0, appointments.size()-1);
+    }
+    
     public void save(File f) throws FileNotFoundException, IOException
     {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
