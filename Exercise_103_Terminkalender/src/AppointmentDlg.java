@@ -210,6 +210,10 @@ public class AppointmentDlg extends javax.swing.JDialog {
         return ok;
     }
 
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
+    
     
     
     /**

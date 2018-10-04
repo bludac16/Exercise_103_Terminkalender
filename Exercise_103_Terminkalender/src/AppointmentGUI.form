@@ -25,11 +25,17 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="L&#xf6;schen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miL&#xf6;schenActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mi&#xc4;ndern">
               <Properties>
                 <Property name="label" type="java.lang.String" value="&#xc4;ndern"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mi&#xc4;ndernActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -52,9 +52,19 @@ public class AppointmentGUI extends javax.swing.JFrame {
         menuOptionen.add(miHinzufügen);
 
         miLöschen.setLabel("Löschen");
+        miLöschen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miLöschenActionPerformed(evt);
+            }
+        });
         menuOptionen.add(miLöschen);
 
         miÄndern.setLabel("Ändern");
+        miÄndern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miÄndernActionPerformed(evt);
+            }
+        });
         menuOptionen.add(miÄndern);
 
         popupOptionen.add(menuOptionen);
@@ -84,6 +94,22 @@ public class AppointmentGUI extends javax.swing.JFrame {
             model.add(a);
         }
     }//GEN-LAST:event_miHinzufügenActionPerformed
+
+    private void miLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLöschenActionPerformed
+        int idx = listOutput.getSelectedIndex();
+        model.delete(idx);
+    }//GEN-LAST:event_miLöschenActionPerformed
+
+    private void miÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miÄndernActionPerformed
+        int idx = listOutput.getSelectedIndex();
+        AppointmentDlg dlg = new AppointmentDlg(this, true);
+        dlg.setVisible(true);
+        
+        if( dlg.isOk() ){
+            Appointment a = dlg.getAppointment();
+            model.edit(idx, a);
+        }
+    }//GEN-LAST:event_miÄndernActionPerformed
 
     /**
      * @param args the command line arguments
