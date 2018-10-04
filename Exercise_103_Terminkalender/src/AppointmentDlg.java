@@ -1,3 +1,7 @@
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +14,9 @@
  */
 public class AppointmentDlg extends javax.swing.JDialog {
 
+    boolean ok;
+    Appointment appointment;
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH.mm");
     /**
      * Creates new form AppointmentDlg
      */
@@ -26,23 +33,183 @@ public class AppointmentDlg extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        lbTag = new javax.swing.JLabel();
+        tfTag = new javax.swing.JTextField();
+        lbMonat = new javax.swing.JLabel();
+        tfMonat = new javax.swing.JTextField();
+        lbJahr = new javax.swing.JLabel();
+        tfJahr = new javax.swing.JTextField();
+        lbStunde = new javax.swing.JLabel();
+        tfStunde = new javax.swing.JTextField();
+        lbMinute = new javax.swing.JLabel();
+        tfMinute = new javax.swing.JTextField();
+        lbText = new javax.swing.JLabel();
+        tfText = new javax.swing.JTextField();
+        btÜbernehmen = new javax.swing.JButton();
+        btAbbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lbTag.setText("Tag:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbTag, gridBagConstraints);
+
+        tfTag.setText("8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfTag, gridBagConstraints);
+
+        lbMonat.setText("Monat:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbMonat, gridBagConstraints);
+
+        tfMonat.setText("9");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfMonat, gridBagConstraints);
+
+        lbJahr.setText("Jahr:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbJahr, gridBagConstraints);
+
+        tfJahr.setText("2014");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfJahr, gridBagConstraints);
+
+        lbStunde.setText("Stunde:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbStunde, gridBagConstraints);
+
+        tfStunde.setText("8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfStunde, gridBagConstraints);
+
+        lbMinute.setText("Minute:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbMinute, gridBagConstraints);
+
+        tfMinute.setText("45");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfMinute, gridBagConstraints);
+
+        lbText.setText("Text:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(lbText, gridBagConstraints);
+
+        tfText.setText("POS1-Workshop");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(tfText, gridBagConstraints);
+
+        btÜbernehmen.setText("Übernehmen");
+        btÜbernehmen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btÜbernehmenActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(btÜbernehmen, gridBagConstraints);
+
+        btAbbrechen.setText("Abbrechen");
+        btAbbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAbbrechenActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(btAbbrechen, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
+        String strdat = String.format("%s.%s.%s-%s.%s",tfTag.getText(), tfMonat.getText(), tfJahr.getText(), tfStunde.getText(), tfMinute.getText());
+        Appointment appointment = new Appointment(tfText.getText(), (LocalDateTime) dtf.parse(strdat));
+        ok = true;
+        this.dispose();
+    }//GEN-LAST:event_btÜbernehmenActionPerformed
+
+    private void btAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAbbrechenActionPerformed
+        ok = false;
+        this.dispose();
+    }//GEN-LAST:event_btAbbrechenActionPerformed
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -86,5 +253,19 @@ public class AppointmentDlg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAbbrechen;
+    private javax.swing.JButton btÜbernehmen;
+    private javax.swing.JLabel lbJahr;
+    private javax.swing.JLabel lbMinute;
+    private javax.swing.JLabel lbMonat;
+    private javax.swing.JLabel lbStunde;
+    private javax.swing.JLabel lbTag;
+    private javax.swing.JLabel lbText;
+    private javax.swing.JTextField tfJahr;
+    private javax.swing.JTextField tfMinute;
+    private javax.swing.JTextField tfMonat;
+    private javax.swing.JTextField tfStunde;
+    private javax.swing.JTextField tfTag;
+    private javax.swing.JTextField tfText;
     // End of variables declaration//GEN-END:variables
 }

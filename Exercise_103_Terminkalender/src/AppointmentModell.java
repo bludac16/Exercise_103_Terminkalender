@@ -1,4 +1,5 @@
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,10 +48,11 @@ public class AppointmentModell extends AbstractListModel{
             {
                 appointments.add((Appointment) o);
             }
-        } catch (Exception Ex)
+        } catch (EOFException EOF)
         {
             
         }
+        ois.close();
     }
     
     @Override
